@@ -10,6 +10,13 @@ const UserStatus = {
   REJECTED: "rejected",
 };
 
+const TaskStatus = {
+  CREATED: "created",
+  ASSIGNED: "assigned",
+  START: "start",
+  COMPLETE: "complete",
+};
+
 const MSG = {
   INSERT_SUCCESS: "InsIert successfully",
   CREATE_SUCCESS: "Create successfully",
@@ -47,4 +54,4 @@ const MSG = {
   FAILED: "Failed!",
 };
 
-module.exports = { UserRole, UserStatus, MSG };
+module.exports = { UserRole, UserStatus, TaskStatus, MSG };

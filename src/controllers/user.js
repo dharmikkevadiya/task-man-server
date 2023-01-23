@@ -92,34 +92,3 @@ module.exports.deleteUser = {
     }
   },
 };
-
-module.exports.followUser = {
-  controller: async function followUser(req, res, next) {
-    try {
-      const id = req.params.id;
-      let user = req.user;
-
-      if (user._id == id)
-        throw CustomErrorHandler.badRequest("You can't follow yourself");
-
-      let result = await service.followUser(id, user);
-      return res.json(Response(MSG.FOLLOW_SUCCESS, result));
-    } catch (err) {
-      next(err);
-    }
-  },
-};
-
-module.exports.unfollowUser = {
-  controller: async function followUser(req, res, next) {
-    try {
-      const id = req.params.id;
-      let user = req.user;
-
-      let result = await service.unfollowUser(id, user);
-      return res.json(Response(MSG.UNFOLLOW_SUCCESS, result));
-    } catch (err) {
-      next(err);
-    }
-  },
-};

@@ -10,6 +10,7 @@ const auth = async (req, res, next) => {
     if (!authHeader) throw CustomErrorHandler.unAuthorized();
 
     const token = authHeader.split(" ")[1];
+    console.log("token: " + token);
 
     //verify token
     const verifyuser = jwt.verify(token, JWT_SECRET);

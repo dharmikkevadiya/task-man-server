@@ -5,8 +5,6 @@ const {
   getMe,
   updateUser,
   deleteUser,
-  followUser,
-  unfollowUser,
   getAllUsers,
   getSingleUser,
   uploadAvatar,
@@ -51,15 +49,5 @@ router.put(
 //@desc     Delete user
 //@access   PRIVATE
 router.delete("/users/:id", auth, deleteUser.controller);
-
-//@route    PUT /users/:id/follow
-//@desc     Follow user
-//@access   PRIVATE
-router.put("/users/:id/follow", auth, followUser.controller);
-
-//@route    PUT /users/:id/unfollow
-//@desc     Unfollow user
-//@access   PRIVATE
-router.put("/users/:id/unfollow", auth, unfollowUser.controller);
 
 module.exports = router;

@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 //routes
 app.use("/", require("./routes/auth"));
 app.use("/", require("./routes/user"));
-app.use("/", require("./routes/posts"));
+app.use("/", require("./routes/tasks"));
 
 // CELEBRATE ERROR HANDLING
 app.use(errorHandler);

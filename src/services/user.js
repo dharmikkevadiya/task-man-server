@@ -13,7 +13,7 @@ class UserService {
   async getAllUsers() {
     const users = await User.find();
     if (!users.length) throw CustomErrorHandler.userNotFound();
-
+    console.log("users::", users);
     return users;
   }
 
@@ -48,36 +48,6 @@ class UserService {
   async deleteUser(id) {
     const user = await User.findByIdAndDelete(id);
     if (!user) throw CustomErrorHandler.userNotFound();
-    return user;
-  }
-
-  async followUser(id, user) {
-    let userData = await User.findById(id);
-    if (!userData) throw CustomErrorHandler.userNotFound();
-
-    if (user.following.includes(id))
-      throw CustomErrorHandler.badRequest("Already followd!");
-
-    user.following.unshift(id);
-    userData.followers.unshift(user._id);
-
-    user = await user.save();
-    await userData.save();
-    return user;
-  }
-
-  async unfollowUser(id, user) {
-    let userData = await User.findById(id);
-    if (!userData) throw CustomErrorHandler.userNotFound();
-
-    if (!user.following.includes(id))
-      throw CustomErrorHandler.badRequest("User has not yet been followd!");
-
-    user.following.splice(user.following.indexOf(id), 1);
-    userData.followers.splice(userData.followers.indexOf(user._id), 1);
-
-    user = await user.save();
-    await userData.save();
     return user;
   }
 }
